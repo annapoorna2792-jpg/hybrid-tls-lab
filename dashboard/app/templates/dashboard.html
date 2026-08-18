@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">REAL TLS · CONTROLLED A/B TEST</p>
+    <h1>Classical vs hybrid TLS, measured at both ends.</h1>
+    <p>The classical endpoint is forced to <code>X25519</code>; the hybrid endpoint is forced to <code>X25519MLKEM768</code>. Both use TLS 1.3, the same certificate and cipher policy.</p>
+  </div>
+  <div class="live"><span></span> Live refresh <b id="refresh-status">on</b></div>
+</section>
+
+<aside class="warning"><strong>Measurement scope:</strong> client handshake is the duration of <code>SSL_connect()</code>; server handshake is <code>SSL_accept()</code>. TCP setup, time-to-first-byte and total request time are reported separately. Results are for education, not production capacity planning.</aside>
+
+<section class="toolbar panel">
+  <label>Benchmark run<select id="run-select"></select></label>
+  <div><span class="muted">Selected</span><strong id="selected-run">No data yet</strong></div>
+  <a class="button" id="csv-link" href="/api/results.csv">Download CSV</a>
+</section>
+
+<section class="mode-grid">
+  <article class="mode-card classical">
+    <div class="mode-head"><span>Classical</span><code>X25519</code></div>
+    <strong class="big" id="classical-p50">—</strong><small>median client handshake</small>
+    <dl><div><dt>p95</dt><dd id="classical-p95">—</dd></div><div><dt>Server p50</dt><dd id="classical-server">—</dd></div><div><dt>Samples</dt><dd id="classical-samples">0</dd></div></dl>
+  </article>
+  <article class="mode-card hybrid">
+    <div class="mode-head"><span>Hybrid PQ/T</span><code>X25519MLKEM768</code></div>
+    <strong class="big" id="hybrid-p50">—</strong><small>median client handshake</small>
+    <dl><div><dt>p95</dt><dd id="hybrid-p95">—</dd></div><div><dt>Server p50</dt><dd id="hybrid-server">—</dd></div><div><dt>Samples</dt><dd id="hybrid-samples">0</dd></div></dl>
+  </article>
+  <article class="delta-card">
+    <span class="muted">Hybrid median overhead</span>
+    <strong class="big" id="delta-value">—</strong>
+    <span id="delta-percent">Waiting for both modes</span>
+    <div class="security-note">One TLS 1.3 RTT in both modes. The delta reflects crypto, message size and system noise—not a deliberately added protocol flight.</div>
+  </article>
+</section>
+
+<section class="grid two">
+  <article class="panel">
+    <div class="panel-head"><div><p class="eyebrow">LATENCY DISTRIBUTION</p><h2>Client TLS handshake</h2></div><span class="muted">milliseconds</span></div>
+    <div id="latency-chart" class="chart empty-chart">Run the benchmark client to populate this chart.</div>
+  </article>
+  <article class="panel">
+    <div class="panel-head"><div><p class="eyebrow">WIRE COST</p><h2>Median bytes per connection</h2></div><span class="muted">TLS BIO counters</span></div>
+    <div id="bytes-chart" class="chart empty-chart">No samples yet.</div>
+  </article>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><div><p class="eyebrow">LATEST SAMPLES</p><h2>Client and server observations</h2></div><span class="muted" id="sample-count">0 samples</span></div>
+  <div class="table-wrap"><table><thead><tr><th>Sample</th><th>Mode / group</th><th>TCP</th><th>Client TLS</th><th>Server TLS</th><th>TTFB</th><th>Total</th><th>Wire</th><th>Status</th></tr></thead><tbody id="results-body"><tr><td colspan="9" class="empty-cell">No measurements recorded.</td></tr></tbody></table></div>
+</section>
+
+<section class="grid two instructions">
+  <article class="panel"><p class="eyebrow">RUN IT</p><h2>Generate a comparison</h2><pre>docker compose up --build -d
+docker compose run --rm benchmark-client</pre><p class="muted">Override the sample count with <code>ITERATIONS=1000 docker compose run --rm benchmark-client</code>.</p></article>
+  <article class="panel"><p class="eyebrow">INTERPRET IT</p><h2>Prefer percentiles over one average</h2><p>Loopback isolates computation. Repeat across controlled RTT, MTU and loss conditions to expose the effect of the larger hybrid ClientHello. Keep certificate, cipher, hardware and OpenSSL build identical.</p></article>
+</section>
+
+<script>window.__INITIAL_DATA__ = {{ initial | tojson }};</script>
+<script src="{{ url_for('static', path='/dashboard.js') }}"></script>
+{% endblock %}
+
