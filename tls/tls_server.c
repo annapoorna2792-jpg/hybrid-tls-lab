@@ -32,8 +32,14 @@ static void stop_server(int signal_number) {
     keep_running = 0;
 }
 
+static int valid_mode(const char *mode) {
+    return strcmp(mode, "classical") == 0 ||
+           strcmp(mode, "hybrid") == 0 ||
+           strcmp(mode, "hybrid_p256") == 0;
+}
+
 static void usage(const char *program) {
-    fprintf(stderr, "Usage: %s --port PORT --group GROUP --mode classical|hybrid --cert FILE --key FILE --dashboard-host HOST --dashboard-port PORT\n", program);
+    fprintf(stderr, "Usage: %s --port PORT --group GROUP --mode classical|hybrid|hybrid_p256 --cert FILE --key FILE --dashboard-host HOST --dashboard-port PORT\n", program);
 }
 
 static int parse_options(int argc, char **argv, ServerOptions *options) {
@@ -60,8 +66,7 @@ static int parse_options(int argc, char **argv, ServerOptions *options) {
         else if (strcmp(argv[index], "--dashboard-port") == 0) options->dashboard_port = argv[++index];
         else return -1;
     }
-    if (options->port < 1 || options->port > 65535 ||
-        (strcmp(options->mode, "classical") != 0 && strcmp(options->mode, "hybrid") != 0)) {
+    if (options->port < 1 || options->port > 65535 || !valid_mode(options->mode)) {
         return -1;
     }
     return 0;

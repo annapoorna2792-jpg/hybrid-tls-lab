@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">01 · TLS &amp; HYBRID SCANNER</p>
+<h1>Scan Results</h1>
+<p class="subtext">Handshake &amp; certificate posture across {{ targets|length }} targets.</p>
+
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Target</th>
+        <th>TLS 1.3</th>
+        <th>PQC</th>
+        <th>Static RSA</th>
+        <th>Weak Cipher</th>
+        <th>Curves</th>
+        <th>QVI Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in targets %}
+      <tr>
+        <td>{{ t.target }}</td>
+        <td>{{ t.tls13 }}</td>
+        <td>{{ t.pqc }}</td>
+        <td>{{ t.static_rsa }}</td>
+        <td>{{ t.weak_cipher }}</td>
+        <td>{{ t.curves }}</td>
+        <td><span class="badge {{ t.tier_class }}">{{ t.qvi_tier_label }}</span></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

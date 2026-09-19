@@ -7,6 +7,9 @@ services:
       DATABASE_PATH: /data/benchmark.db
     volumes:
       - benchmark-data:/data
+      - ./dashboard/app/data:/app/app/data
+      - ./dashboard/app/templates:/app/app/templates
+      - ./dashboard/app/static:/app/app/static
     restart: unless-stopped
 
   classical-tls:
@@ -73,6 +76,38 @@ services:
       start_period: 5s
     restart: unless-stopped
 
+  hybrid-p256-tls:
+    image: hybrid-tls-lab-openssl:local
+    build: ./tls
+    command:
+      - /opt/tls/bin/tls_server
+      - --port
+      - "4435"
+      - --group
+      - SecP256r1MLKEM768
+      - --mode
+      - hybrid_p256
+      - --cert
+      - /opt/tls/certs/server.crt
+      - --key
+      - /opt/tls/certs/server.key
+      - --dashboard-host
+      - dashboard
+      - --dashboard-port
+      - "8000"
+    ports:
+      - "4435:4435"
+    depends_on:
+      dashboard:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "printf 'GET /health HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' | openssl s_client -connect 127.0.0.1:4435 -tls1_3 -groups SecP256r1MLKEM768 -CAfile /opt/tls/certs/server.crt -verify_hostname localhost -quiet >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 4s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
   benchmark-client:
     image: hybrid-tls-lab-openssl:local
     build: ./tls
@@ -83,6 +118,8 @@ services:
       CLASSICAL_PORT: "4433"
       HYBRID_HOST: hybrid-tls
       HYBRID_PORT: "4434"
+      P256_HOST: hybrid-p256-tls
+      P256_PORT: "4435"
       DASHBOARD_HOST: dashboard
       DASHBOARD_PORT: "8000"
       ITERATIONS: "${ITERATIONS:-100}"
@@ -94,7 +131,8 @@ services:
         condition: service_healthy
       hybrid-tls:
         condition: service_healthy
+      hybrid-p256-tls:
+        condition: service_healthy
 
 volumes:
   benchmark-data:
-

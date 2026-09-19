@@ -1,0 +1,4201 @@
+{
+  "meta": {
+    "method": "raw ClientHello probes, nothing inferred",
+    "timestamp": "2026-09-06T15:53:14Z"
+  },
+  "results": [
+    {
+      "label": "Cloudflare-ref",
+      "host": "cloudflare.com",
+      "timestamp": "2026-09-06T15:48:13Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.23
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.78
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.29
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=WE1,O=Google Trust Services,C=US",
+        "not_after": "2026-12-04T23:29:33+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "Google-ref",
+      "host": "www.google.com",
+      "timestamp": "2026-09-06T15:48:14Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 6.87
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.46
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.18
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": true,
+      "weak_cipher_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x000A",
+        "selected_in_offer": true
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=WR2,O=Google Trust Services,C=US",
+        "not_after": "2026-11-02T08:39:48+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Google",
+      "server_header": "gws",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-SBI",
+      "host": "www.onlinesbi.sbi",
+      "timestamp": "2026-09-06T15:48:15Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "non_response",
+      "fallback_tls_version": "TLSv1.3",
+      "fallback_cipher": "TLS_AES_128_GCM_SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=DigiCert EV RSA CA G2,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-29T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "PSB-PNB",
+      "host": "www.pnbindia.in",
+      "timestamp": "2026-09-06T15:48:18Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 337.09
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 340.73
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 329.21
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R3 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2026-12-06T06:31:29+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-BoB",
+      "host": "www.bankofbaroda.in",
+      "timestamp": "2026-09-06T15:48:24Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "TIMEOUT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "TIMEOUT"
+      },
+      "host_actually_up": false,
+      "measurement_status": "host_down",
+      "fallback_tls_version": null,
+      "fallback_cipher": null,
+      "certificate": {
+        "reachable": false,
+        "error": "TimeoutError: timed out"
+      },
+      "cert_issuer_ca": ""
+    },
+    {
+      "label": "PSB-Canara",
+      "host": "www.canarabank.com",
+      "timestamp": "2026-09-06T15:48:49Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 16.14
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 15.52
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8013.02
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R3 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2026-10-01T07:36:25+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "Amazon",
+      "server_header": "CloudFront",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-Union",
+      "host": "www.unionbankofindia.co.in",
+      "timestamp": "2026-09-06T15:49:14Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 302.32
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 294.03
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 301.28
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009D",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign RSA OV SSL CA 2018,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-02-06T07:20:21+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-IndianBank",
+      "host": "www.indianbank.in",
+      "timestamp": "2026-09-06T15:49:20Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 370.79
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 371.0
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 400.43
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust EV RSA CA G2,O=DigiCert Inc,C=US",
+        "not_after": "2026-09-17T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-CentralBank",
+      "host": "www.centralbankofindia.co.in",
+      "timestamp": "2026-09-06T15:49:27Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "non_response",
+      "fallback_tls_version": "TLSv1.3",
+      "fallback_cipher": "TLS_AES_256_GCM_SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign RSA OV SSL CA 2018,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2026-10-29T07:10:33+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign"
+    },
+    {
+      "label": "PSB-BoI",
+      "host": "www.bankofindia.co.in",
+      "timestamp": "2026-09-06T15:49:29Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 13.37
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.67
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.51
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Sectigo Public Server Authentication CA OV R36,O=Sectigo Limited,C=GB",
+        "not_after": "2027-03-10T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSB-UCO",
+      "host": "www.ucobank.com",
+      "timestamp": "2026-09-06T15:49:30Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 70,
+        "desc": "protocol_version"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "Microsoft-IIS/10.0",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign RSA OV SSL CA 2018,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2026-07-28T12:23:21+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign"
+    },
+    {
+      "label": "PSB-IOB",
+      "host": "www.iob.in",
+      "timestamp": "2026-09-06T15:49:33Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 65.25
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 61.31
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 63.72
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GoDaddy TLS Intermediate CA DV - R1v1,O=GoDaddy.com,C=US",
+        "not_after": "2026-11-21T12:47:19+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-HDFC",
+      "host": "www.hdfcbank.com",
+      "timestamp": "2026-09-06T15:49:35Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 12.19
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.51
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.62
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2027-01-15T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-ICICI",
+      "host": "www.icicibank.com",
+      "timestamp": "2026-09-06T15:49:37Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.14
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.14
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.16
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Sectigo Public Server Authentication CA OV R36,O=Sectigo Limited,C=GB",
+        "not_after": "2026-11-07T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-Axis",
+      "host": "www.axisbank.com",
+      "timestamp": "2026-09-06T15:49:38Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.84
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.77
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.71
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2027-01-15T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Akamai",
+      "server_header": "AkamaiGHost",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-Kotak",
+      "host": "www.kotak.com",
+      "timestamp": "2026-09-06T15:49:39Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 11.19
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.44
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.59
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Sectigo Public Server Authentication CA OV R36,O=Sectigo Limited,C=GB",
+        "not_after": "2026-10-14T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-IndusInd",
+      "host": "www.indusind.com",
+      "timestamp": "2026-09-06T15:49:40Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 561.36
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 569.2
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 576.91
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Sectigo Public Server Authentication CA OV R36,O=Sectigo Limited,C=GB",
+        "not_after": "2026-10-15T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "",
+      "server_header": "volt-adc",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-YesBank",
+      "host": "www.yesbank.in",
+      "timestamp": "2026-09-06T15:49:49Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.19
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.79
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.94
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2027-02-08T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-IDFC",
+      "host": "www.idfcfirstbank.com",
+      "timestamp": "2026-09-06T15:49:51Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 291.36
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 286.38
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 325.91
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=Sectigo Public Server Authentication CA EV E36,O=Sectigo Limited,C=GB",
+        "not_after": "2027-03-17T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-Federal",
+      "host": "www.federalbank.co.in",
+      "timestamp": "2026-09-06T15:49:56Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 436.75
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 478.98
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 441.66
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-10-29T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-RBL",
+      "host": "www.rblbank.com",
+      "timestamp": "2026-09-06T15:50:03Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.84
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.98
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 33.86
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-01T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-Bandhan",
+      "host": "www.bandhanbank.com",
+      "timestamp": "2026-09-06T15:50:05Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "BigIP",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha384WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=EM DV TLS CA - G2A-1,O=eMudhra Technologies Limited,C=IN",
+        "not_after": "2026-10-01T05:05:44+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": ""
+    },
+    {
+      "label": "PVB-SouthIndian",
+      "host": "www.southindianbank.com",
+      "timestamp": "2026-09-06T15:50:08Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 15.3
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.37
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.9
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha384WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R46 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-02-18T09:11:24+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-Karnataka",
+      "host": "karnatakabank.com",
+      "timestamp": "2026-09-06T15:50:09Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.61
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.23
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.51
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R3 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-01-11T11:26:02+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "",
+      "server_header": "volt-adc",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PVB-CityUnion",
+      "host": "www.cityunionbank.com",
+      "timestamp": "2026-09-06T15:50:10Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 47,
+        "desc": "illegal_parameter"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "cert_sig_alg": "sha384WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R46 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-02-25T06:26:55+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign"
+    },
+    {
+      "label": "PVB-DCB",
+      "host": "www.dcbbank.com",
+      "timestamp": "2026-09-06T15:50:13Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "SHORT",
+          "detail": "0 bytes",
+          "elapsed_ms": 302.58
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "SHORT",
+          "detail": "0 bytes",
+          "elapsed_ms": 280.11
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "SHORT",
+          "detail": "0 bytes",
+          "elapsed_ms": 311.66
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "SHORT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "SHORT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_CHACHA20_POLY1305_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=DigiCert EV RSA CA G2,O=DigiCert Inc,C=US",
+        "not_after": "2026-09-14T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "SFB-AU",
+      "host": "www.aubank.in",
+      "timestamp": "2026-09-06T15:50:19Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 16.85
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 13.3
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.12
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Go Daddy Secure Certificate Authority - G2,OU=http://certs.godaddy.com/repository/,O=GoDaddy.com\\, Inc.,L=Scottsdale,",
+        "not_after": "2026-10-30T08:16:07+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "SFB-Equitas",
+      "host": "www.equitasbank.com",
+      "timestamp": "2026-09-06T15:50:20Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.03
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.24
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.52
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R3 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2026-12-29T10:36:08+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "",
+      "server_header": "volt-adc",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "SFB-Ujjivan",
+      "host": "www.ujjivansfb.in",
+      "timestamp": "2026-09-06T15:50:21Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "NETWORK_ERROR",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "NETWORK_ERROR",
+        "detail": "[Errno 104] Connection reset by peer"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "BigIP",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2027-01-07T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "SFB-Jana",
+      "host": "www.janabank.com",
+      "timestamp": "2026-09-06T15:50:24Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 314.61
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 312.08
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 311.46
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS ECC CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-12-22T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Microsoft",
+      "server_header": "Microsoft-Azure-Application-Gateway/v2",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PB-Airtel",
+      "host": "www.airtel.in",
+      "timestamp": "2026-09-06T15:50:29Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.93
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.81
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.54
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=YR2,O=Let's Encrypt,C=US",
+        "not_after": "2026-10-13T05:28:21+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "LetsEncrypt",
+      "edge_provider": "",
+      "server_header": "Apache",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PB-IPPB",
+      "host": "www.ippbonline.com",
+      "timestamp": "2026-09-06T15:50:31Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 364.51
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 350.5
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 333.06
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009D",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Entrust OV TLS Issuing RSA CA 2,O=Entrust Limited,C=CA",
+        "not_after": "2026-09-17T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Entrust",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-Razorpay",
+      "host": "razorpay.com",
+      "timestamp": "2026-09-06T15:50:36Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.25
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.08
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8011.66
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Amazon RSA 2048 M04,O=Amazon,C=US",
+        "not_after": "2027-03-22T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Amazon",
+      "edge_provider": "Amazon",
+      "server_header": "awselb/2.0",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-Paytm",
+      "host": "paytm.com",
+      "timestamp": "2026-09-06T15:51:02Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 311.86
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 346.24
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 381.63
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=GeoTrust TLS ECC CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-09-24T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-PhonePe",
+      "host": "www.phonepe.com",
+      "timestamp": "2026-09-06T15:51:08Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 13.48
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.78
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.59
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Go Daddy Secure Certificate Authority - G2,OU=http://certs.godaddy.com/repository/,O=GoDaddy.com\\, Inc.,L=Scottsdale,",
+        "not_after": "2026-12-03T09:12:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-CCAvenue",
+      "host": "www.ccavenue.com",
+      "timestamp": "2026-09-06T15:51:09Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 70,
+        "desc": "protocol_version"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "Akamai",
+      "server_header": "AkamaiGHost",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-12-31T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "PSP-BillDesk",
+      "host": "www.billdesk.com",
+      "timestamp": "2026-09-06T15:51:10Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES256-GCM-SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Entrust OV TLS Issuing RSA CA 2,O=Entrust Limited,C=CA",
+        "not_after": "2026-10-21T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Entrust"
+    },
+    {
+      "label": "PSP-Cashfree",
+      "host": "www.cashfree.com",
+      "timestamp": "2026-09-06T15:51:13Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.42
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.72
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8009.43
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=RapidSSL TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-10-27T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-Instamojo",
+      "host": "www.instamojo.com",
+      "timestamp": "2026-09-06T15:51:39Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 10.5
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.88
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.75
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=WE1,O=Google Trust Services,C=US",
+        "not_after": "2026-10-16T08:50:12+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-PayU",
+      "host": "payu.in",
+      "timestamp": "2026-09-06T15:51:41Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.33
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.08
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8011.77
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-12-14T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Amazon",
+      "server_header": "PayU",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "PSP-NPCI",
+      "host": "www.npci.org.in",
+      "timestamp": "2026-09-06T15:52:06Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.99
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.2
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.43
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-12-18T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-Zerodha",
+      "host": "zerodha.com",
+      "timestamp": "2026-09-06T15:52:08Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 9.77
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 13.59
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.75
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=WE1,O=Google Trust Services,C=US",
+        "not_after": "2026-10-18T21:25:16+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-Groww",
+      "host": "groww.in",
+      "timestamp": "2026-09-06T15:52:09Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 10.72
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 9.78
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.15
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Starfield Secure Certificate Authority - G2,OU=http://certs.starfieldtech.com/repository/,O=Starfield Technologies\\, ",
+        "not_after": "2026-10-07T10:48:30+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-Upstox",
+      "host": "upstox.com",
+      "timestamp": "2026-09-06T15:52:10Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 12.02
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4587,
+          "selected_group_name": "SecP256r1MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.83
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "TIMEOUT",
+          "elapsed_ms": 8012.51
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768",
+        "SecP256r1MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Amazon RSA 2048 M04,O=Amazon,C=US",
+        "not_after": "2027-03-09T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Amazon",
+      "edge_provider": "Amazon",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-AngelOne",
+      "host": "www.angelone.in",
+      "timestamp": "2026-09-06T15:52:35Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 10.75
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.77
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.28
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-12-18T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-ICICIDirect",
+      "host": "www.icicidirect.com",
+      "timestamp": "2026-09-06T15:52:37Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.36
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.06
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.49
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-19T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "BRK-HDFCSec",
+      "host": "www.hdfcsec.com",
+      "timestamp": "2026-09-06T15:52:38Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 12.44
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 13.01
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 11.15
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": true,
+      "static_rsa_probe": {
+        "accepted": true,
+        "kind": "SERVER_HELLO",
+        "cipher": "0x009C",
+        "selected_in_offer": true
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA256",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=WE1,O=Google Trust Services,C=US",
+        "not_after": "2026-10-16T03:32:41+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GoogleTrustServices",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "DEP-NSDL",
+      "host": "nsdl.co.in",
+      "timestamp": "2026-09-06T15:52:40Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "",
+      "server_header": "",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=Sectigo Public Server Authentication CA OV R36,O=Sectigo Limited,C=GB",
+        "not_after": "2026-12-02T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "Sectigo"
+    },
+    {
+      "label": "DEP-CDSL",
+      "host": "www.cdslindia.com",
+      "timestamp": "2026-09-06T15:52:43Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 347.62
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 338.0
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 1083.79
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha384WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R46 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-03-14T09:51:25+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign",
+      "edge_provider": "Cloudflare",
+      "server_header": "cloudflare",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "EXC-NSE",
+      "host": "www.nseindia.com",
+      "timestamp": "2026-09-06T15:52:50Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.79
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.25
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.51
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-10-09T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "Akamai",
+      "server_header": "AkamaiGHost",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "EXC-BSE",
+      "host": "www.bseindia.com",
+      "timestamp": "2026-09-06T15:52:51Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.34
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.15
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.09
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-21T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-LIC",
+      "host": "licindia.in",
+      "timestamp": "2026-09-06T15:52:53Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 44.43
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 45.27
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 43.04
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha384WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=EM OV TLS CA - G2A-1,O=eMudhra Technologies Limited,C=IN",
+        "not_after": "2026-10-04T05:20:24+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "",
+      "edge_provider": "",
+      "server_header": "v/7.0.4/6.6.8/v103fra1-www",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-HDFCLife",
+      "host": "www.hdfclife.com",
+      "timestamp": "2026-09-06T15:52:56Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.85
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.61
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.73
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2027-03-05T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-ICICIPru",
+      "host": "www.iciciprulife.com",
+      "timestamp": "2026-09-06T15:52:57Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 8.28
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.25
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 8.8
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-10-23T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-SBILife",
+      "host": "www.sbilife.co.in",
+      "timestamp": "2026-09-06T15:52:58Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1302",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 7.9
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.96
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 7.8
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "ecdsa-with-SHA384",
+        "cert_key": "EC-secp256r1",
+        "issuer": "CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-18T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-MaxLife",
+      "host": "www.maxlifeinsurance.com",
+      "timestamp": "2026-09-06T15:53:00Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 526.34
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 460.01
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 436.11
+        }
+      },
+      "pq_groups": [],
+      "pqc": false,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1",
+        "secp521r1",
+        "x448"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=YR2,O=Let's Encrypt,C=US",
+        "not_after": "2026-10-26T11:42:32+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "LetsEncrypt",
+      "edge_provider": "Amazon",
+      "server_header": "CloudFront",
+      "authentication_ready": false,
+      "confidentiality_ready": false,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-Bajaj",
+      "host": "www.bajajallianz.com",
+      "timestamp": "2026-09-06T15:53:08Z",
+      "probe_variant": "empty_keyshare",
+      "reachable": true,
+      "tls13": true,
+      "pq_probes": {
+        "X25519MLKEM768": {
+          "group": "X25519MLKEM768",
+          "supported": true,
+          "kind": "HELLO_RETRY_REQUEST",
+          "selected_group": 4588,
+          "selected_group_name": "X25519MLKEM768",
+          "cipher_suite": "0x1301",
+          "negotiated_version": "0x0304",
+          "is_tls13": true,
+          "elapsed_ms": 11.68
+        },
+        "SecP256r1MLKEM768": {
+          "group": "SecP256r1MLKEM768",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 10.76
+        },
+        "SecP384r1MLKEM1024": {
+          "group": "SecP384r1MLKEM1024",
+          "supported": false,
+          "kind": "ALERT",
+          "level": 2,
+          "code": 40,
+          "desc": "handshake_failure",
+          "elapsed_ms": 12.93
+        }
+      },
+      "pq_groups": [
+        "X25519MLKEM768"
+      ],
+      "pqc": true,
+      "classical_groups": [
+        "x25519",
+        "secp256r1",
+        "secp384r1"
+      ],
+      "static_rsa": false,
+      "static_rsa_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "weak_cipher": false,
+      "weak_cipher_probe": {
+        "accepted": false,
+        "kind": "ALERT",
+        "cipher": null,
+        "selected_in_offer": false
+      },
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1,O=DigiCert Inc,C=US",
+        "not_after": "2027-02-04T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert",
+      "edge_provider": "",
+      "server_header": "",
+      "authentication_ready": false,
+      "confidentiality_ready": true,
+      "impossible_state": false,
+      "measurement_status": "measured",
+      "countable": true
+    },
+    {
+      "label": "INS-TataAIG",
+      "host": "www.tataaig.com",
+      "timestamp": "2026-09-06T15:53:09Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "tls12_only",
+      "pqc": false,
+      "pq_groups": [],
+      "classical_groups": [],
+      "static_rsa": null,
+      "weak_cipher": null,
+      "confidentiality_ready": false,
+      "authentication_ready": false,
+      "impossible_state": false,
+      "countable": true,
+      "edge_provider": "Amazon",
+      "server_header": "",
+      "fallback_tls_version": "TLSv1.2",
+      "fallback_cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.2",
+        "cipher": "ECDHE-RSA-AES128-GCM-SHA256",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GeoTrust TLS RSA CA G1,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "not_after": "2026-11-17T23:59:59+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "DigiCert"
+    },
+    {
+      "label": "INS-NewIndia",
+      "host": "www.newindia.co.in",
+      "timestamp": "2026-09-06T15:53:12Z",
+      "probe_variant": "keyshare",
+      "reachable": false,
+      "tls13": false,
+      "unreachable_reason": "ALERT",
+      "control_probe": {
+        "group": "x25519",
+        "supported": false,
+        "variant": "keyshare",
+        "kind": "ALERT",
+        "level": 2,
+        "code": 40,
+        "desc": "handshake_failure"
+      },
+      "host_actually_up": true,
+      "measurement_status": "non_response",
+      "fallback_tls_version": "TLSv1.3",
+      "fallback_cipher": "TLS_AES_256_GCM_SHA384",
+      "certificate": {
+        "reachable": true,
+        "tls_version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cert_sig_alg": "sha256WithRSAEncryption",
+        "cert_key": "RSA-2048",
+        "issuer": "CN=GlobalSign GCC R3 EV TLS CA 2025,O=GlobalSign nv-sa,C=BE",
+        "not_after": "2027-02-03T07:31:18+00:00",
+        "pq_authenticated": false
+      },
+      "cert_issuer_ca": "GlobalSign"
+    }
+  ]
+}

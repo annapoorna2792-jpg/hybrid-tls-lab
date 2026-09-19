@@ -9,3 +9,12 @@ oqs-provider/
 *.db
 *.sqlite3
 results.csv
+
+# backups and scratch files
+*.bak
+*.bak-*
+templates.bak-*/
+*.zip
+dashboard/app/templates/.removed/
+docker-compose.yml.bak-*
+dashboard/app/data/vendors.csv.pre45

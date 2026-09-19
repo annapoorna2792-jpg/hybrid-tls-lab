@@ -5,7 +5,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
-Mode = Literal["classical", "hybrid"]
+Mode = Literal["classical", "hybrid", "hybrid_p256"]
 
 
 class RunCreate(BaseModel):

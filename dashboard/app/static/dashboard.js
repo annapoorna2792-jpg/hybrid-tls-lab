@@ -14,7 +14,7 @@ function drawBars(targetId, rows, formatter) {
   const values = rows.map((row) => row.value || 0);
   const max = Math.max(...values, 1);
   target.classList.remove('empty-chart');
-  target.innerHTML = `<div class="chart-legend"><span><i class="legend-dot classical"></i>Classical</span><span><i class="legend-dot hybrid"></i>Hybrid</span></div>` + rows.map((row) => `
+  target.innerHTML = `<div class="chart-legend"><span><i class="legend-dot classical"></i>Classical</span><span><i class="legend-dot hybrid"></i>Hybrid</span><span><i class="legend-dot hybrid_p256"></i>Hybrid P256</span></div>` + rows.map((row) => `
     <div class="bar-row"><span>${row.label}</span><div class="bar-track"><div class="bar ${row.mode}" style="width:${Math.max(1, row.value / max * 100)}%"></div></div><b>${formatter(row.value)}</b></div>`).join('');
 }
 
@@ -27,7 +27,7 @@ function render(data) {
   $('selected-run').textContent = data.selected_run || 'No data yet';
   $('csv-link').href = data.selected_run ? `/api/results.csv?run_id=${encodeURIComponent(data.selected_run)}` : '/api/results.csv';
 
-  for (const mode of ['classical', 'hybrid']) {
+  for (const mode of ['classical', 'hybrid', 'hybrid_p256']) {
     $(`${mode}-p50`).textContent = ms(metric(data, mode, 'client_handshake_us'));
     $(`${mode}-p95`).textContent = ms(metric(data, mode, 'client_handshake_us', 'p95'));
     $(`${mode}-server`).textContent = ms(metric(data, mode, 'server_handshake_us'));
@@ -41,20 +41,25 @@ function render(data) {
     drawBars('latency-chart', [
       { label: 'p50 C', mode: 'classical', value: metric(data, 'classical', 'client_handshake_us') },
       { label: 'p50 H', mode: 'hybrid', value: metric(data, 'hybrid', 'client_handshake_us') },
+      { label: 'p50 P', mode: 'hybrid_p256', value: metric(data, 'hybrid_p256', 'client_handshake_us') },
       { label: 'p95 C', mode: 'classical', value: metric(data, 'classical', 'client_handshake_us', 'p95') },
       { label: 'p95 H', mode: 'hybrid', value: metric(data, 'hybrid', 'client_handshake_us', 'p95') },
+      { label: 'p95 P', mode: 'hybrid_p256', value: metric(data, 'hybrid_p256', 'client_handshake_us', 'p95') },
       { label: 'p99 C', mode: 'classical', value: metric(data, 'classical', 'client_handshake_us', 'p99') },
       { label: 'p99 H', mode: 'hybrid', value: metric(data, 'hybrid', 'client_handshake_us', 'p99') },
+      { label: 'p99 P', mode: 'hybrid_p256', value: metric(data, 'hybrid_p256', 'client_handshake_us', 'p99') },
     ], ms);
     drawBars('bytes-chart', [
       { label: 'Sent C', mode: 'classical', value: metric(data, 'classical', 'bytes_sent') },
       { label: 'Sent H', mode: 'hybrid', value: metric(data, 'hybrid', 'bytes_sent') },
+      { label: 'Sent P', mode: 'hybrid_p256', value: metric(data, 'hybrid_p256', 'bytes_sent') },
       { label: 'Recv C', mode: 'classical', value: metric(data, 'classical', 'bytes_received') },
       { label: 'Recv H', mode: 'hybrid', value: metric(data, 'hybrid', 'bytes_received') },
+      { label: 'Recv P', mode: 'hybrid_p256', value: metric(data, 'hybrid_p256', 'bytes_received') },
     ], bytes);
   }
 
-  $('sample-count').textContent = `${data.recent.length} recent · ${(data.summary?.modes?.classical?.samples || 0) + (data.summary?.modes?.hybrid?.samples || 0)} total`;
+  $('sample-count').textContent = `${data.recent.length} recent · ${(data.summary?.modes?.classical?.samples || 0) + (data.summary?.modes?.hybrid?.samples || 0) + (data.summary?.modes?.hybrid_p256?.samples || 0)} total`;
   $('results-body').innerHTML = data.recent.length ? data.recent.map((row) => `<tr>
     <td><code>${row.sample_id}</code></td><td><span class="badge ${row.mode}">${row.mode}</span> ${row.negotiated_group || '—'}</td>
     <td>${ms(row.client_tcp_us)}</td><td>${ms(row.client_handshake_us)}</td><td>${ms(row.server_handshake_us)}</td>

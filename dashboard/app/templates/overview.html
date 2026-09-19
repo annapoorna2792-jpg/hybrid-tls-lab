@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">00 · OVERVIEW</p>
+<h1>Post-Quantum Readiness Pipeline</h1>
+<p class="subtext">Scan → benchmark → score, across {{ qvi.total }} BFSI endpoints.</p>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">Targets Scanned</div>
+    <div class="kpi-value">{{ qvi.total }}</div>
+    <div class="kpi-sub">TLS endpoints in scope</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">PQ-Ready</div>
+    <div class="kpi-value">{{ qvi.pq_ready_pct }}%</div>
+    <div class="kpi-sub">{{ qvi.tier1 }} of {{ qvi.total }} at QVI Tier 1</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Critical (QVI Tier 3)</div>
+    <div class="kpi-value">{{ qvi.tier3 }}</div>
+    <div class="kpi-sub">Remediation required</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Benchmark Health</div>
+    <div class="kpi-value" id="kpi-bench-health">—</div>
+    <div class="kpi-sub" id="kpi-bench-sub">modes / samples healthy</div>
+  </div>
+</div>
+
+<div class="two-col">
+  <div class="panel">
+    <h2 style="font-size:15px;margin-bottom:12px;">Pipeline</h2>
+    <div class="pipeline">
+      <div class="pipeline-step"><div class="num">1</div><div><div class="label">TLS &amp; Hybrid Scanner</div><div class="desc">Observes TLS handshakes directly</div></div></div>
+      <div class="pipeline-arrow">↓</div>
+      <div class="pipeline-step"><div class="num">2</div><div><div class="label">Crypto Engine (liboqs)</div><div class="desc">Confirms available KEMs — ML-KEM-768</div></div></div>
+      <div class="pipeline-arrow">↓</div>
+      <div class="pipeline-arrow">↓</div>
+      <div class="pipeline-step"><div class="num">3</div><div><div class="label">Quantum Risk Score</div><div class="desc">Key exchange, certificate and data retention</div></div></div>
+      <div class="pipeline-arrow">↓</div>
+      <div class="pipeline-step"><div class="num">4</div><div><div class="label">Dashboard &amp; Reporting</div><div class="desc">Ranked remediation order</div></div></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2 style="font-size:15px;margin-bottom:12px;">Targets by QVI Tier</h2>
+    <div class="chart-wrap"><canvas id="qviChart"></canvas></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2 style="font-size:15px;margin-bottom:12px;">Findings — elevated / at-risk</h2>
+  <table>
+    <thead><tr><th>Target</th><th>Finding</th></tr></thead>
+    <tbody>
+      {% for t in targets if t.tier_class != 'tier1' %}
+      <tr>
+        <td>{{ t.target }}</td>
+        <td>
+          {% if t.static_rsa == 'Yes' %}Static RSA key exchange in use.{% endif %}
+          {% if t.weak_cipher == 'Yes' %}Weak cipher suite negotiated.{% endif %}
+          {% if t.tls13 == 'No' %}TLS 1.3 not supported.{% endif %}
+          {% if t.pqc == 'No' and t.tier_class == 'tier2' %}No PQ key exchange offered.{% endif %}
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="2">No elevated findings — all targets at QVI Tier 1.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const qvi = JSON.parse(document.getElementById('qvi-data').textContent);
+  const initial = JSON.parse(document.getElementById('initial-data').textContent);
+
+  new Chart(document.getElementById('qviChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Tier 1 — Ready', 'Tier 2 — Conditional', 'Tier 3 — Critical'],
+      datasets: [{ data: [qvi.tier1, qvi.tier2, qvi.tier3], backgroundColor: ['#43c07a', '#e0a63d', '#e0524f'] }]
+    },
+    options: { plugins: { legend: { position: 'bottom', labels: { color: '#8a96ab' } } } }
+  });
+
+  // Benchmark health KPI — derived from initial.summary.modes if present
+  try {
+    const modes = (initial.summary && initial.summary.modes) || {};
+    const modeNames = Object.keys(modes);
+    const total = modeNames.length;
+    const healthy = modeNames.filter(m => modes[m].failures === 0 && modes[m].samples > 0).length;
+    const samples = modeNames.reduce((a, m) => a + modes[m].samples, 0);
+    document.getElementById('kpi-bench-health').textContent = `${healthy}/${total}`;
+    document.getElementById('kpi-bench-sub').textContent = `modes healthy · ${samples} samples`;
+  } catch (e) { /* dashboard_data shape not yet loaded for this run */ }
+</script>
+{% endblock %}

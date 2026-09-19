@@ -1,0 +1,9 @@
+vendor,tls13,pqc,pqc_provider,static_rsa,weak_cipher,curves
+HDFC Bank,Yes,Yes,Cloudflare,No,No,"X25519, secp256r1, secp384r1, secp521r1"
+Razorpay,Yes,Yes,Amazon,No,No,"X25519, secp256r1, secp384r1"
+Axis Bank,No,Yes,Akamai,Yes,No,"X25519, secp256r1"
+CCAvenue,No,No,,Yes,No,"X25519, secp256r1"
+PhonePe,Yes,Yes,Cloudflare,Yes,Yes,"X25519, secp256r1, secp384r1, secp521r1"
+Paytm,Yes,Yes,Cloudflare,No,No,"X25519, secp256r1, secp384r1, secp521r1"
+SBI,Yes,No,,No,No,"X25519, X448, secp256r1, secp384r1, secp521r1"
+ICICI Bank,Yes,Yes,Arelion,No,No,"X25519, secp256r1"

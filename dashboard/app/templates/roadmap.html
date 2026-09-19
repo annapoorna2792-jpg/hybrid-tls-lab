@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">07 · MIGRATION ROADMAP</p>
+<h1>Remediation Prioritization</h1>
+<p class="subtext">Ranked by rough risk-reduction-per-dollar — urgency ÷ remediation-cost weight (S=1, M=3, L=8).</p>
+
+<div class="panel">
+  <h2 style="font-size:15px;margin-bottom:12px;">Prioritized</h2>
+  <table>
+    <thead><tr><th>Rank</th><th>Target</th><th>Status</th><th>Remediation Cost</th><th>Priority Score</th></tr></thead>
+    <tbody>
+      {% for r in roadmap.prioritized %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ r.target }}</td>
+        <td>{{ r.exposure_status }}</td>
+        <td>{{ r.remediation_cost }}</td>
+        <td>{{ r.priority_score }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">No targets have both an exposure classification and a remediation cost yet — see below.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="panel">
+  <h2 style="font-size:15px;margin-bottom:12px;">Needs input before ranking</h2>
+  <p class="subtext">These targets are missing data sensitivity, retention, or remediation cost in <code>app/data/hndl_inputs.csv</code>.</p>
+  <table>
+    <thead><tr><th>Target</th><th>Sensitivity</th><th>Retention</th><th>Remediation Cost</th></tr></thead>
+    <tbody>
+      {% for r in roadmap.needs_input %}
+      <tr>
+        <td>{{ r.target }}</td>
+        <td>{{ r.data_sensitivity }}</td>
+        <td>{{ r.retention_years if r.retention_years is not none else "—" }}</td>
+        <td>{{ r.remediation_cost or "—" }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4">All targets fully classified.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

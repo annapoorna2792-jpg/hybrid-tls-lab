@@ -6,7 +6,8 @@ from collections.abc import Iterable
 from typing import Any
 
 
-MODES = ("classical", "hybrid")
+MODES = ("classical", "hybrid", "hybrid_p256")
+BASELINE_MODE = "classical"
 METRICS = (
     "client_tcp_us",
     "client_handshake_us",
@@ -61,16 +62,24 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
             "metrics": {metric: describe(row.get(metric) for row in successful) for metric in METRICS},
         }
 
-    classical = output["modes"]["classical"]["metrics"]
-    hybrid = output["modes"]["hybrid"]["metrics"]
-    for metric in METRICS:
-        classical_p50 = classical[metric]["p50"]
-        hybrid_p50 = hybrid[metric]["p50"]
-        if classical_p50 is None or hybrid_p50 is None:
-            output["comparison"][metric] = {"delta": None, "percent": None}
+    baseline = output["modes"][BASELINE_MODE]["metrics"]
+    for mode in MODES:
+        if mode == BASELINE_MODE:
             continue
-        delta = hybrid_p50 - classical_p50
-        percent = (delta / classical_p50 * 100) if classical_p50 else None
-        output["comparison"][metric] = {"delta": delta, "percent": percent}
-    return output
+        mode_metrics = output["modes"][mode]["metrics"]
+        mode_comparison: dict[str, Any] = {}
+        for metric in METRICS:
+            baseline_p50 = baseline[metric]["p50"]
+            mode_p50 = mode_metrics[metric]["p50"]
+            if baseline_p50 is None or mode_p50 is None:
+                mode_comparison[metric] = {"delta": None, "percent": None}
+                continue
+            delta = mode_p50 - baseline_p50
+            percent = (delta / baseline_p50 * 100) if baseline_p50 else None
+            mode_comparison[metric] = {"delta": delta, "percent": percent}
+        output["comparison"][mode] = mode_comparison
 
+    if "hybrid" in output["comparison"]:
+        output["comparison"].update(output["comparison"]["hybrid"])
+
+    return output

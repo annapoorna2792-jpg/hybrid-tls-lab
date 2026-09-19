@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">{% if view == 'queue' %}06 &middot; REMEDIATION{% else %}05 &middot; QUANTUM RISK SCORING{% endif %}</p>
+<h1>{% if view == 'queue' %}Remediation Queue{% else %}Quantum Risk Score{% endif %}</h1>
+<p class="subtext">{% if view == 'queue' %}Endpoints ranked by risk reduction per unit of migration effort.{% else %}Measured cryptographic posture weighted by regulatory data-retention class, scored 0&ndash;100 per endpoint.{% endif %}</p>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-value">{{ s.n }}</div><div class="kpi-label">Endpoints scored</div></div>
+  {% for b in s.bands %}
+  <div class="kpi-card">
+    <div class="kpi-value" style="color:{% if b.code=='critical' %}#e0524f{% elif b.code=='high' %}#e0a63d{% else %}#43c07a{% endif %}">{{ b.n }}</div>
+    <div class="kpi-label">{{ b.label }} ({{ b.min }}&ndash;{{ b.max }})</div>
+  </div>
+  {% endfor %}
+  <div class="kpi-card"><div class="kpi-value">{{ s.avg }}</div><div class="kpi-label">Average score</div></div>
+  <div class="kpi-card"><div class="kpi-value" style="color:#e0524f">{{ s.pq_cert }}</div><div class="kpi-label">PQ certificates</div></div>
+</div>
+
+<div class="panel" style="margin:16px 0">
+  <a href="/score" style="margin-right:18px;{% if view != 'queue' %}font-weight:700{% endif %}">Ranked by risk</a>
+  <a href="/score?view=queue" style="{% if view == 'queue' %}font-weight:700{% endif %}">Migration queue &mdash; risk per unit effort</a>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start">
+  <div class="panel" style="padding:0;overflow:hidden">
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr>
+        <th style="padding:12px">Endpoint</th><th>Key exchange</th><th>Certificate</th>
+        {% if view == 'queue' %}<th>Effort</th>{% else %}<th>Edge</th>{% endif %}
+        <th style="text-align:right;padding-right:14px">{% if view == 'queue' %}Risk / effort{% else %}Risk{% endif %}</th>
+      </tr></thead>
+      <tbody>
+      {% for t in targets %}
+        <tr data-i="{{ loop.index0 }}" style="cursor:pointer">
+          <td style="padding:10px 12px"><b>{{ t.target }}</b>
+            <div style="font-size:11px;color:#5d6f8c">{{ t.data_sensitivity }}{% if t.retention_years %} &middot; {{ t.retention_years }}y{% endif %}</div></td>
+          <td style="font-size:13px">{% if not t.tls13 %}No TLS 1.3{% elif t.pqc %}Hybrid ML-KEM{% else %}Classical only{% endif %}
+            {% if t.static_rsa %}<div style="font-size:11px;color:#e0a63d">static RSA</div>{% endif %}</td>
+          <td style="font-size:13px">{{ t.cert_key or 'RSA' }}</td>
+          {% if view == 'queue' %}
+            <td style="font-size:12px">{{ t.effort or '-' }} <span style="color:#5d6f8c">{{ t.effort_reason[:32] }}</span></td>
+          {% else %}
+            <td style="font-size:13px">{{ t.pqc_provider or 'origin' }}</td>
+          {% endif %}
+          <td style="text-align:right;padding-right:14px">
+            <span style="display:inline-block;min-width:34px;text-align:center;border-radius:5px;padding:2px 8px;font-weight:700;{% if t.band_code=='critical' %}background:rgba(224,82,79,.14);color:#e0524f{% elif t.band_code=='high' %}background:rgba(224,166,61,.13);color:#e0a63d{% else %}background:rgba(67,192,122,.12);color:#43c07a{% endif %}">{% if view == 'queue' %}{{ t.ratio or '-' }}{% else %}{{ t.total }}{% endif %}</span>
+            <div style="height:4px;border-radius:2px;margin-top:5px;background:#0c1c36"><i style="display:block;height:100%;border-radius:2px;width:{{ t.total }}%;background:{% if t.band_code=='critical' %}#e0524f{% elif t.band_code=='high' %}#e0a63d{% else %}#43c07a{% endif %}"></i></div>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel" style="position:sticky;top:20px">
+    <h3 style="margin-top:0">Connection detail</h3>
+    <p id="dempty" style="font-size:13px;color:#8fa2bd">Select an endpoint to see how its score was built.</p>
+    <div id="dbody" style="display:none"></div>
+  </div>
+</div>
+
+<div class="panel" style="margin-top:18px">
+  <p style="margin:0;font-size:12.5px;color:#8fa2bd">
+    <b>{{ s.pq_cert }} of {{ s.n }}</b> endpoints present a post-quantum certificate, so authentication
+    readiness is reported as a population finding rather than scored. <b>{{ s.no_action }}</b> endpoints
+    have no remediation available: they already negotiate a hybrid group with forward secrecy.
+    The remaining <b>{{ s.remediable }}</b> are actionable today.
+  </p>
+</div>
+
+<script id="sdata" type="application/json">{{ targets|tojson }}</script>
+<script>
+(function(){
+  var D=JSON.parse(document.getElementById('sdata').textContent);
+  function bar(l,v,m,r,c){
+    return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">'+
+      '<span style="font-size:12.5px;color:#8fa2bd;width:96px;flex:none">'+l+'</span>'+
+      '<span style="flex:1;height:7px;border-radius:4px;background:#0c1c36;overflow:hidden">'+
+      '<i style="display:block;height:100%;width:'+(v/m*100)+'%;background:'+c+'"></i></span>'+
+      '<span style="font-size:12.5px;font-weight:700;width:30px;text-align:right">'+v+'</span></div>'+
+      (r?'<div style="font-size:11.5px;color:#5d6f8c;margin:0 0 11px 106px">'+r+'</div>':'');
+  }
+  document.querySelector('tbody').addEventListener('click',function(e){
+    var tr=e.target.closest('tr'); if(!tr) return;
+    [].forEach.call(this.querySelectorAll('tr'),function(x){x.style.background=''});
+    tr.style.background='rgba(34,211,238,.08)';
+    var t=D[+tr.dataset.i];
+    var col=t.band_code==='critical'?'#e0524f':t.band_code==='high'?'#e0a63d':'#43c07a';
+    document.getElementById('dempty').style.display='none';
+    var b=document.getElementById('dbody'); b.style.display='block';
+    b.innerHTML='<div style="font-size:15px;font-weight:700">'+t.target+'</div>'+
+      '<div style="font-size:11.5px;color:#5d6f8c;margin-bottom:12px">'+(t.data_sensitivity||'')+'</div>'+
+      '<div style="font-size:30px;font-weight:700;color:'+col+'">'+t.total+' <span style="font-size:13px;color:#8fa2bd;font-weight:500">/ 100</span></div>'+
+      '<div style="font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:'+col+';margin-bottom:15px">'+t.band_label+' risk</div>'+
+      bar('Key exchange',t.f1,40,t.f1r,'#e0524f')+
+      bar('Certificate',t.f2,35,t.f2r,'#e0524f')+
+      bar('Data lifetime',t.f3,25,t.f3r,'#e0a63d')+
+      (t.pen?bar('Penalty',t.pen,10,t.penr,'#e0a63d'):'')+
+      '<div style="border-top:1px solid #183255;margin:12px 0;padding-top:12px;font-size:12.5px;line-height:1.7">'+
+      '<b>TLS 1.3</b> '+(t.tls13?'yes':'no')+' &middot; <b>Hybrid KEM</b> '+(t.pqc?'yes':'no')+'<br>'+
+      '<b>Certificate</b> '+(t.cert_key||'not captured')+'<br>'+
+      '<b>Edge</b> '+(t.pqc_provider||'origin')+'<br>'+
+      '<b>Remediation</b> '+t.effort_reason+'</div>';
+  });
+})();
+</script>
+{% endblock %}

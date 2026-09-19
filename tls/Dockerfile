@@ -12,7 +12,7 @@ RUN openssl list -tls1_3 -tls-groups | tr ':' '\n' | grep -qx X25519MLKEM768 \
     && cp tls_server tls_benchmark /opt/tls/bin/ \
     && openssl req -x509 -newkey rsa:2048 -nodes -sha256 -days 3650 \
          -subj "/CN=hybrid-tls-lab" \
-         -addext "subjectAltName=DNS:localhost,DNS:classical-tls,DNS:hybrid-tls,IP:127.0.0.1" \
+         -addext "subjectAltName=DNS:localhost,DNS:classical-tls,DNS:hybrid-tls,DNS:hybrid-p256-tls,IP:127.0.0.1" \
          -keyout /opt/tls/certs/server.key -out /opt/tls/certs/server.crt \
     && chmod 600 /opt/tls/certs/server.key
 

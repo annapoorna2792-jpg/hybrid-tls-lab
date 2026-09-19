@@ -22,6 +22,7 @@ typedef struct {
 typedef struct {
     Endpoint classical;
     Endpoint hybrid;
+    Endpoint hybrid_p256;
     const char *dashboard_host;
     const char *dashboard_port;
     const char *ca_file;
@@ -31,7 +32,7 @@ typedef struct {
 } ClientOptions;
 
 static void usage(const char *program) {
-    fprintf(stderr, "Usage: %s [--classical-host HOST] [--classical-port PORT] [--hybrid-host HOST] [--hybrid-port PORT] [--dashboard-host HOST] [--dashboard-port PORT] [--cafile FILE] [--iterations N] [--warmup N] [--run-id ID]\n", program);
+    fprintf(stderr, "Usage: %s [--classical-host HOST] [--classical-port PORT] [--hybrid-host HOST] [--hybrid-port PORT] [--p256-host HOST] [--p256-port PORT] [--dashboard-host HOST] [--dashboard-port PORT] [--cafile FILE] [--iterations N] [--warmup N] [--run-id ID]\n", program);
 }
 
 static void default_run_id(char *output, size_t output_size) {
@@ -48,6 +49,7 @@ static int parse_options(int argc, char **argv, ClientOptions *options, char *ge
     *options = (ClientOptions){
         .classical = {.host = "classical-tls", .port = "4433", .group = "X25519", .mode = "classical"},
         .hybrid = {.host = "hybrid-tls", .port = "4434", .group = "X25519MLKEM768", .mode = "hybrid"},
+        .hybrid_p256 = {.host = "hybrid-p256-tls", .port = "4435", .group = "SecP256r1MLKEM768", .mode = "hybrid_p256"},
         .dashboard_host = "dashboard",
         .dashboard_port = "8000",
         .ca_file = "/opt/tls/certs/server.crt",
@@ -61,6 +63,8 @@ static int parse_options(int argc, char **argv, ClientOptions *options, char *ge
         else if (strcmp(argv[index], "--classical-port") == 0) options->classical.port = argv[++index];
         else if (strcmp(argv[index], "--hybrid-host") == 0) options->hybrid.host = argv[++index];
         else if (strcmp(argv[index], "--hybrid-port") == 0) options->hybrid.port = argv[++index];
+        else if (strcmp(argv[index], "--p256-host") == 0) options->hybrid_p256.host = argv[++index];
+        else if (strcmp(argv[index], "--p256-port") == 0) options->hybrid_p256.port = argv[++index];
         else if (strcmp(argv[index], "--dashboard-host") == 0) options->dashboard_host = argv[++index];
         else if (strcmp(argv[index], "--dashboard-port") == 0) options->dashboard_port = argv[++index];
         else if (strcmp(argv[index], "--cafile") == 0) options->ca_file = argv[++index];
@@ -250,7 +254,7 @@ finished:
             success,
             connection_error
         );
-        printf("%-9s %4d/%d  TLS %8.3f ms  total %8.3f ms  %s\n", endpoint->mode, sequence, options->iterations, (double)(handshake_done - connected) / 1000.0, (double)(completed - started) / 1000.0, success ? "OK" : connection_error);
+        printf("%-14s %4d/%d  TLS %8.3f ms  total %8.3f ms  %s\n", endpoint->mode, sequence, options->iterations, (double)(handshake_done - connected) / 1000.0, (double)(completed - started) / 1000.0, success ? "OK" : connection_error);
         fflush(stdout);
     }
     return success ? 0 : -1;
@@ -259,54 +263,81 @@ finished:
 int main(int argc, char **argv) {
     ClientOptions options;
     char generated_run_id[128];
-    char run_json[1200];
+    char run_json[1400];
     char version_escaped[500];
     char complete_path[300];
     SSL_CTX *classical_context;
     SSL_CTX *hybrid_context;
+    SSL_CTX *hybrid_p256_context;
+    SSL_CTX *contexts[3];
+    Endpoint *endpoints[3];
+    const int group_count = 3;
     int index;
     int failures = 0;
+
     if (parse_options(argc, argv, &options, generated_run_id, sizeof(generated_run_id)) != 0) {
         usage(argv[0]);
         return 2;
     }
     signal(SIGPIPE, SIG_IGN);
     OPENSSL_init_ssl(0, NULL);
+
     classical_context = create_context(&options.classical, options.ca_file);
     hybrid_context = create_context(&options.hybrid, options.ca_file);
-    if (classical_context == NULL || hybrid_context == NULL) {
-        fprintf(stderr, "unable to initialize TLS contexts; confirm this OpenSSL build supports X25519MLKEM768\n");
+    hybrid_p256_context = create_context(&options.hybrid_p256, options.ca_file);
+    if (classical_context == NULL || hybrid_context == NULL || hybrid_p256_context == NULL) {
+        fprintf(stderr, "unable to initialize TLS contexts; confirm this OpenSSL build supports X25519MLKEM768 and SecP256r1MLKEM768\n");
         SSL_CTX_free(classical_context);
         SSL_CTX_free(hybrid_context);
+        SSL_CTX_free(hybrid_p256_context);
         return 1;
     }
+
+    endpoints[0] = &options.classical;
+    endpoints[1] = &options.hybrid;
+    endpoints[2] = &options.hybrid_p256;
+    contexts[0] = classical_context;
+    contexts[1] = hybrid_context;
+    contexts[2] = hybrid_p256_context;
+
     json_escape(OpenSSL_version(OPENSSL_VERSION), version_escaped, sizeof(version_escaped));
-    snprintf(run_json, sizeof(run_json), "{\"run_id\":\"%s\",\"client_name\":\"openssl-c-client\",\"openssl_version\":\"%s\",\"iterations\":%d,\"warmup\":%d,\"notes\":\"Alternating classical/hybrid order; TLS 1.3; fresh full handshakes\"}", options.run_id, version_escaped, options.iterations, options.warmup);
+    snprintf(
+        run_json,
+        sizeof(run_json),
+        "{\"run_id\":\"%s\",\"client_name\":\"openssl-c-client\",\"openssl_version\":\"%s\",\"iterations\":%d,\"warmup\":%d,\"notes\":\"Rotating classical/hybrid/hybrid_p256 order; TLS 1.3; fresh full handshakes\"}",
+        options.run_id, version_escaped, options.iterations, options.warmup
+    );
     if (post_json(options.dashboard_host, options.dashboard_port, "/api/runs", run_json) != 0) {
         fprintf(stderr, "cannot create dashboard run; aborting so measurements are not lost\n");
         SSL_CTX_free(classical_context);
         SSL_CTX_free(hybrid_context);
+        SSL_CTX_free(hybrid_p256_context);
         return 1;
     }
     printf("Run %s: %d warmups + %d measured connections per mode\n", options.run_id, options.warmup, options.iterations);
     printf("OpenSSL: %s\n", OpenSSL_version(OPENSSL_VERSION));
+
     for (index = 1; index <= options.warmup; index++) {
-        probe(&options, &options.classical, classical_context, index, 0);
-        probe(&options, &options.hybrid, hybrid_context, index, 0);
-    }
-    for (index = 1; index <= options.iterations; index++) {
-        if (index % 2 == 1) {
-            if (probe(&options, &options.classical, classical_context, index, 1) != 0) failures++;
-            if (probe(&options, &options.hybrid, hybrid_context, index, 1) != 0) failures++;
-        } else {
-            if (probe(&options, &options.hybrid, hybrid_context, index, 1) != 0) failures++;
-            if (probe(&options, &options.classical, classical_context, index, 1) != 0) failures++;
+        int g;
+        for (g = 0; g < group_count; g++) {
+            probe(&options, endpoints[g], contexts[g], index, 0);
         }
     }
+
+    for (index = 1; index <= options.iterations; index++) {
+        int start = (index - 1) % group_count;
+        int g;
+        for (g = 0; g < group_count; g++) {
+            int slot = (start + g) % group_count;
+            if (probe(&options, endpoints[slot], contexts[slot], index, 1) != 0) failures++;
+        }
+    }
+
     snprintf(complete_path, sizeof(complete_path), "/api/runs/%s/complete", options.run_id);
     post_json(options.dashboard_host, options.dashboard_port, complete_path, "{}");
     printf("Completed %s with %d failed probes. Dashboard: http://localhost:8000/?run_id=%s\n", options.run_id, failures, options.run_id);
     SSL_CTX_free(classical_context);
     SSL_CTX_free(hybrid_context);
+    SSL_CTX_free(hybrid_p256_context);
     return failures == 0 ? 0 : 1;
 }

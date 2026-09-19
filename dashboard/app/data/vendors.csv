@@ -1,0 +1,55 @@
+vendor,tls13,pqc,pqc_provider,static_rsa,weak_cipher,curves
+PSB-PNB,Yes,No,,No,No,"x25519, secp256r1, secp384r1"
+PSB-Canara,Yes,Yes,Amazon,No,No,"x25519, secp256r1, secp384r1, X25519MLKEM768, SecP256r1MLKEM768"
+PSB-Union,Yes,No,,Yes,No,"x25519, secp256r1, secp384r1, secp521r1"
+PSB-IndianBank,Yes,No,,No,No,"x25519, secp256r1, secp384r1"
+PSB-BoI,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PSB-IOB,Yes,Yes,,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PVB-HDFC,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PVB-ICICI,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+PVB-Axis,Yes,Yes,Akamai,No,No,"x25519, secp256r1, X25519MLKEM768"
+PVB-Kotak,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PVB-IndusInd,Yes,No,,No,No,"x25519, secp256r1, secp384r1"
+PVB-YesBank,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+PVB-IDFC,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+PVB-Federal,Yes,No,,No,No,"x25519, secp256r1, secp384r1, secp521r1, x448"
+PVB-RBL,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+PVB-SouthIndian,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PVB-Karnataka,Yes,No,,No,No,"x25519, secp256r1, secp384r1"
+PVB-DCB,Yes,No,,No,No,"x25519, secp256r1, secp384r1, secp521r1, x448"
+SFB-AU,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+SFB-Equitas,Yes,No,,No,No,"x25519, secp256r1, secp384r1"
+SFB-Jana,Yes,No,Microsoft,No,No,"x25519, secp256r1, secp384r1, secp521r1, x448"
+PB-Airtel,Yes,No,,No,No,"x25519, secp256r1"
+PB-IPPB,Yes,No,,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, x448"
+PSP-Razorpay,Yes,Yes,Amazon,No,No,"x25519, secp256r1, secp384r1, X25519MLKEM768, SecP256r1MLKEM768"
+PSP-Paytm,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PSP-PhonePe,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PSP-Cashfree,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, X25519MLKEM768, SecP256r1MLKEM768"
+PSP-Instamojo,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+PSP-PayU,Yes,Yes,Amazon,No,No,"x25519, secp256r1, secp384r1, X25519MLKEM768, SecP256r1MLKEM768"
+PSP-NPCI,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+BRK-Zerodha,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+BRK-Groww,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+BRK-Upstox,Yes,Yes,Amazon,No,No,"x25519, secp256r1, secp384r1, X25519MLKEM768, SecP256r1MLKEM768"
+BRK-AngelOne,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+BRK-ICICIDirect,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+BRK-HDFCSec,Yes,Yes,Cloudflare,Yes,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+DEP-CDSL,Yes,Yes,Cloudflare,No,No,"x25519, secp256r1, secp384r1, secp521r1, X25519MLKEM768"
+EXC-NSE,Yes,Yes,Akamai,No,No,"x25519, secp256r1, X25519MLKEM768"
+EXC-BSE,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+INS-LIC,Yes,Yes,,No,No,"x25519, secp256r1, secp384r1, secp521r1, x448, X25519MLKEM768"
+INS-HDFCLife,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+INS-ICICIPru,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+INS-SBILife,Yes,Yes,,No,No,"x25519, secp256r1, X25519MLKEM768"
+INS-MaxLife,Yes,No,Amazon,No,No,"x25519, secp256r1, secp384r1, secp521r1, x448"
+INS-Bajaj,Yes,Yes,,No,No,"x25519, secp256r1, secp384r1, X25519MLKEM768"
+PSB-UCO,No,No,,No,No,(TLS 1.2 only)
+PVB-Bandhan,No,No,,No,No,(TLS 1.2 only)
+PVB-CityUnion,No,No,,No,No,(TLS 1.2 only)
+SFB-Ujjivan,No,No,,No,No,(TLS 1.2 only)
+PSP-CCAvenue,No,No,Akamai,No,No,(TLS 1.2 only)
+PSP-BillDesk,No,No,,No,No,(TLS 1.2 only)
+DEP-NSDL,No,No,,No,No,(TLS 1.2 only)
+INS-TataAIG,No,No,Amazon,No,No,(TLS 1.2 only)
+PSB-SBI,Yes,No,,No,No,x25519

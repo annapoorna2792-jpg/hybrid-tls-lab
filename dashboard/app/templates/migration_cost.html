@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">06 &middot; MIGRATION COST</p>
+<h1>What migration costs</h1>
+<p class="subtext">Measured on a controlled pair of endpoints differing only in key-exchange group.</p>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-value">200</div><div class="kpi-label">handshakes, 0 failures</div></div>
+  <div class="kpi-card"><div class="kpi-value" style="color:#e0a63d">+0.368 ms</div><div class="kpi-label">client p50 increase</div></div>
+  <div class="kpi-card"><div class="kpi-value" style="color:#e0a63d">+17.8%</div><div class="kpi-label">relative latency</div></div>
+  <div class="kpi-card"><div class="kpi-value" style="color:#e0524f">3.4&times;</div><div class="kpi-label">bytes sent</div></div>
+</div>
+
+<div class="panel" style="margin-top:18px">
+  <table>
+    <thead><tr><th>Measure</th><th>Classical X25519</th><th>Hybrid X25519MLKEM768</th><th>Difference</th></tr></thead>
+    <tbody>
+      <tr><td>Client handshake p50</td><td>2.0665 ms</td><td>2.4345 ms</td><td>+0.368 ms &middot; +17.8%</td></tr>
+      <tr><td>Server handshake p50</td><td>1.8385 ms</td><td>2.2360 ms</td><td>+0.398 ms &middot; +21.6%</td></tr>
+      <tr><td>Bytes sent p50</td><td>484 B</td><td>1,651 B</td><td>+1,167 B &middot; +241%</td></tr>
+      <tr><td>Bytes received p50</td><td>1,770 B</td><td>2,868 B</td><td>+1,098 B &middot; +62%</td></tr>
+      <tr><td>Total client time p50</td><td>2.8850 ms</td><td>3.2870 ms</td><td>+0.402 ms &middot; +13.9%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="panel" style="margin-top:18px">
+  <h3 style="margin-top:0">Where the cost actually is</h3>
+  <p style="font-size:13px;color:#8fa2bd">Both endpoints run on the same host with the same TLS
+  version, certificate and cipher policy, differing only in the offered key-exchange group.
+  Execution order alternates to remove sequencing bias and session resumption is disabled, so
+  every sample performs a complete key exchange.</p>
+  <p style="font-size:13px;color:#8fa2bd">Latency is the number usually quoted, and it is small
+  &mdash; under half a millisecond. The bandwidth figure is the one that matters: the ML-KEM
+  encapsulation key and ciphertext push bytes sent from 484 to 1,651, past the point where a
+  handshake fits in a single initial congestion window. On constrained or lossy paths that is
+  where the real cost would appear.</p>
+  <p style="font-size:12px;color:#5d6f8c">Measured over loopback on a single t3.micro instance,
+  so these figures isolate cryptographic and protocol cost with no network path. They are a
+  floor, not a prediction of production latency.</p>
+</div>
+{% endblock %}

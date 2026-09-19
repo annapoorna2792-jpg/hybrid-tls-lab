@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">02 · CRYPTO ENGINE (liboqs)</p>
+<h1>Key Encapsulation Benchmark</h1>
+<p class="subtext">classical vs. hybrid vs. hybrid_p256 — p50/p95/p99 handshake latency. Run: <code id="runId">—</code></p>
+
+<div class="mode-cards" id="modeCards"></div>
+
+<div class="two-col">
+  <div class="panel">
+    <h2 style="font-size:15px;margin-bottom:12px;">Handshake latency (p50, µs)</h2>
+    <div class="chart-wrap"><canvas id="latencyChart"></canvas></div>
+  </div>
+  <div class="panel">
+    <h2 style="font-size:15px;margin-bottom:12px;">Bytes transferred (p50)</h2>
+    <div class="chart-wrap"><canvas id="bytesChart"></canvas></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const initial = JSON.parse(document.getElementById('initial-data').textContent);
+  const modes = (initial.summary && initial.summary.modes) || {};
+  document.getElementById('runId').textContent = initial.selected_run || 'none';
+  const modeNames = Object.keys(modes);
+  const colors = { classical: '#8a96ab', hybrid: '#4fd1c5', hybrid_p256: '#e0a63d' };
+
+  const cardsEl = document.getElementById('modeCards');
+  modeNames.forEach(m => {
+    const d = modes[m];
+    const hs = d.metrics.client_handshake_us || {};
+    cardsEl.insertAdjacentHTML('beforeend', `
+      <div class="mode-card">
+        <h3>${m}</h3>
+        <div class="stat"><span>Samples</span><b>${d.samples}</b></div>
+        <div class="stat"><span>Failures</span><b>${d.failures}</b></div>
+        <div class="stat"><span>Handshake p50</span><b>${hs.p50 != null ? Math.round(hs.p50) + ' µs' : '—'}</b></div>
+        <div class="stat"><span>Handshake p99</span><b>${hs.p99 != null ? Math.round(hs.p99) + ' µs' : '—'}</b></div>
+      </div>`);
+  });
+
+  new Chart(document.getElementById('latencyChart'), {
+    type: 'bar',
+    data: {
+      labels: modeNames,
+      datasets: [{
+        label: 'p50 handshake (µs)',
+        data: modeNames.map(m => (modes[m].metrics.client_handshake_us || {}).p50 || 0),
+        backgroundColor: modeNames.map(m => colors[m] || '#4fd1c5'),
+      }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#8a96ab' } }, x: { ticks: { color: '#8a96ab' } } } }
+  });
+
+  new Chart(document.getElementById('bytesChart'), {
+    type: 'bar',
+    data: {
+      labels: modeNames,
+      datasets: [
+        { label: 'Sent', data: modeNames.map(m => (modes[m].metrics.bytes_sent || {}).p50 || 0), backgroundColor: '#4fd1c5' },
+        { label: 'Received', data: modeNames.map(m => (modes[m].metrics.bytes_received || {}).p50 || 0), backgroundColor: '#e0a63d' },
+      ]
+    },
+    options: { plugins: { legend: { labels: { color: '#8a96ab' } } }, scales: { y: { ticks: { color: '#8a96ab' } }, x: { ticks: { color: '#8a96ab' } } } }
+  });
+</script>
+{% endblock %}

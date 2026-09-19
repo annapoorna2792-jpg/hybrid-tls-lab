@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">06 · REGULATORY COMPLIANCE MAPPER</p>
+<h1>Compliance Posture</h1>
+
+<div class="todo" style="margin-bottom:20px;">
+  The mandate rows below (FIPS 203 / RBI Q-SAFE / EU DORA) are structural placeholders.
+  Requirement text and citations are NOT sourced from the actual regulations — replace
+  them in <code>app/compliance.py</code> with your compliance team's sourced language
+  before treating this as anything more than an engineering proxy. Pass/fail here only
+  reflects what the scanner measures (TLS 1.3, PQC negotiated, no static RSA/weak cipher),
+  not a legal determination.
+</div>
+
+{% for mandate in compliance.mandates %}
+<div class="panel">
+  <h2 style="font-size:15px;">{{ mandate.name }} <span style="color:var(--text-dim);font-weight:400;font-size:13px;">— {{ mandate.jurisdiction }}</span></h2>
+  <p class="subtext" style="margin-bottom:12px;">{{ mandate.requirement_text }}</p>
+  <p class="subtext" style="margin-bottom:12px;font-size:12px;">Source: {{ mandate.citation }}</p>
+  <div class="kpi-row" style="grid-template-columns: 1fr 1fr; margin-bottom:0;">
+    <div class="kpi-card"><div class="kpi-label">Pass</div><div class="kpi-value" style="color:#43c07a">{{ compliance.per_mandate[mandate.id].pass }}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Fail</div><div class="kpi-value" style="color:#e0524f">{{ compliance.per_mandate[mandate.id].fail }}</div></div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="panel">
+  <table>
+    <thead>
+      <tr>
+        <th>Target</th>
+        {% for mandate in compliance.mandates %}<th>{{ mandate.name }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in compliance_results %}
+      <tr>
+        <td>{{ r.target }}</td>
+        {% for mr in r.mandates %}
+        <td>{% if mr.passed %}<span class="badge tier1">Pass</span>{% else %}<span class="badge tier3">Fail</span>{% endif %}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
